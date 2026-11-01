@@ -17,6 +17,7 @@ def tasks():
     print("Export as a csv file: Press E")
     print("Exit: Press Q")
 
+
 def update_tasks():
     print("Press N to update Name: ")
     print("Press A to update Age: ")
@@ -100,14 +101,17 @@ while True:
                 print("\nEnter something first!\n")
             else:
                 print(df.to_string())
+
         case "e":
             if df.empty:
                 print("Enter something first!")
             else:
                 csv_file_name = input("Enter a file name: ")
                 df.to_csv(f"{csv_file_name}.csv", index=False)
+
         case "q":
             print("Exiting...")
             break
+
         case _:
             print("\nInvalid Input!\n")
