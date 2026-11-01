@@ -101,7 +101,11 @@ while True:
             else:
                 print(df.to_string())
         case "e":
-            pass
+            if df.empty:
+                print("Enter something first!")
+            else:
+                csv_file_name = input("Enter a file name: ")
+                df.to_csv(f"{csv_file_name}.csv", index=False)
         case "q":
             print("Exiting...")
             break
