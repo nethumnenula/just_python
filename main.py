@@ -47,8 +47,6 @@ while True:
             print(f"\n{name} added successfully!\n")
             index_ += 1
 
-
-
         case "u":
             if df.empty:
                 print("\nEnter something first!\n")
@@ -87,12 +85,21 @@ while True:
                         break
 
         case "d":
-            pass
+            if df.empty:
+                print("Enter something first!")
+            else:
+                user_input_delete = int(input("Enter the index of the row\n you want to delete: "))
+                if user_input_delete in df.index:
+                    print(f"{df.loc[user_input_delete, "Name"]} deleted!")
+                    df = df.drop(user_input_delete)
+                else:
+                    print("Invalid Index!")
+
         case "s":
             if df.empty:
                 print("\nEnter something first!\n")
             else:
-                print(df)
+                print(df.to_string())
         case "e":
             pass
         case "q":
