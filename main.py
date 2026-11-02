@@ -27,13 +27,27 @@ def update_tasks():
     print("Press Q to Exit update menu: ")
 
 
+name = ""
+age = 0
+country = ""
+city = ""
+uni = ""
+
+
 while True:
     tasks()
     user_input_select = input("Please Enter here: ").lower()
     match user_input_select:
         case "a":
             name = input("Enter a Name: ").capitalize()
-            age = int(input(f"Enter {name}'s Age: "))
+            while True:
+                try:
+                    age = int(input(f"Enter {name}'s Age: "))
+                    break
+                except ValueError:
+                    print("Enter a number!")
+                    continue
+
             country = input(f"Enter {name}'s Country: ").capitalize()
             city = input(f"Enter {name}'s City: ").capitalize()
             uni = input(f"Enter {name}'s University: ").capitalize()
@@ -43,7 +57,7 @@ while True:
                 "Country": country,
                 "City": city,
                 "University": uni
-            }], index=[index_])
+            }])
             df = pd.concat([df, new_row])
             print(f"\n{name} added successfully!\n")
             index_ += 1
